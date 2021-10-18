@@ -11,7 +11,8 @@ import SwiftUI
 struct Redux_DemoApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ValidationView()
+                .environmentObject(AppStore(initialState: .init(), reducer: appReducer, environment: MiddleWare(api: MockAPI())))
         }
     }
 }

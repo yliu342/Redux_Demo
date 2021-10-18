@@ -8,12 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		5EEF946B271D392200F800A1 /* Redux_DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF946A271D392200F800A1 /* Redux_DemoApp.swift */; };
-		5EEF946D271D392200F800A1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF946C271D392200F800A1 /* ContentView.swift */; };
 		5EEF946F271D392600F800A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EEF946E271D392600F800A1 /* Assets.xcassets */; };
 		5EEF9472271D392600F800A1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EEF9471271D392600F800A1 /* Preview Assets.xcassets */; };
 		5EEF947C271D392600F800A1 /* Redux_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF947B271D392600F800A1 /* Redux_DemoTests.swift */; };
 		5EEF9486271D392600F800A1 /* Redux_DemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF9485271D392600F800A1 /* Redux_DemoUITests.swift */; };
 		5EEF9488271D392600F800A1 /* Redux_DemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF9487271D392600F800A1 /* Redux_DemoUITestsLaunchTests.swift */; };
+		5EEF949A271D395C00F800A1 /* ValidationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF9494271D395B00F800A1 /* ValidationView.swift */; };
+		5EEF949B271D395C00F800A1 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF9495271D395B00F800A1 /* Store.swift */; };
+		5EEF949C271D395C00F800A1 /* MiddleWare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF9496271D395C00F800A1 /* MiddleWare.swift */; };
+		5EEF949D271D395C00F800A1 /* AppActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF9497271D395C00F800A1 /* AppActions.swift */; };
+		5EEF949E271D395C00F800A1 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF9498271D395C00F800A1 /* AppState.swift */; };
+		5EEF949F271D395C00F800A1 /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF9499271D395C00F800A1 /* Reducer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +41,6 @@
 /* Begin PBXFileReference section */
 		5EEF9467271D392200F800A1 /* Redux_Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Redux_Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EEF946A271D392200F800A1 /* Redux_DemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Redux_DemoApp.swift; sourceTree = "<group>"; };
-		5EEF946C271D392200F800A1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5EEF946E271D392600F800A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5EEF9471271D392600F800A1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5EEF9477271D392600F800A1 /* Redux_DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Redux_DemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +48,12 @@
 		5EEF9481271D392600F800A1 /* Redux_DemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Redux_DemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EEF9485271D392600F800A1 /* Redux_DemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Redux_DemoUITests.swift; sourceTree = "<group>"; };
 		5EEF9487271D392600F800A1 /* Redux_DemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Redux_DemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5EEF9494271D395B00F800A1 /* ValidationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationView.swift; sourceTree = "<group>"; };
+		5EEF9495271D395B00F800A1 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		5EEF9496271D395C00F800A1 /* MiddleWare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiddleWare.swift; sourceTree = "<group>"; };
+		5EEF9497271D395C00F800A1 /* AppActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppActions.swift; sourceTree = "<group>"; };
+		5EEF9498271D395C00F800A1 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		5EEF9499271D395C00F800A1 /* Reducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +104,13 @@
 		5EEF9469271D392200F800A1 /* Redux_Demo */ = {
 			isa = PBXGroup;
 			children = (
+				5EEF9497271D395C00F800A1 /* AppActions.swift */,
+				5EEF9498271D395C00F800A1 /* AppState.swift */,
+				5EEF9496271D395C00F800A1 /* MiddleWare.swift */,
+				5EEF9499271D395C00F800A1 /* Reducer.swift */,
+				5EEF9495271D395B00F800A1 /* Store.swift */,
+				5EEF9494271D395B00F800A1 /* ValidationView.swift */,
 				5EEF946A271D392200F800A1 /* Redux_DemoApp.swift */,
-				5EEF946C271D392200F800A1 /* ContentView.swift */,
 				5EEF946E271D392600F800A1 /* Assets.xcassets */,
 				5EEF9470271D392600F800A1 /* Preview Content */,
 			);
@@ -257,8 +272,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5EEF946D271D392200F800A1 /* ContentView.swift in Sources */,
+				5EEF949A271D395C00F800A1 /* ValidationView.swift in Sources */,
+				5EEF949F271D395C00F800A1 /* Reducer.swift in Sources */,
+				5EEF949E271D395C00F800A1 /* AppState.swift in Sources */,
+				5EEF949C271D395C00F800A1 /* MiddleWare.swift in Sources */,
 				5EEF946B271D392200F800A1 /* Redux_DemoApp.swift in Sources */,
+				5EEF949B271D395C00F800A1 /* Store.swift in Sources */,
+				5EEF949D271D395C00F800A1 /* AppActions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
