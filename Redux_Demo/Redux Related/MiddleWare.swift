@@ -11,6 +11,7 @@ import Combine
 protocol API {
     func validateUsername(username: String) -> AnyPublisher<Void, Error>
     func validatePassword(password: String) -> AnyPublisher<Void, Error>
+    func fetchUsers() -> AnyPublisher<[User], Error>
 }
 
 struct MockAPI: API {
@@ -41,6 +42,13 @@ struct MockAPI: API {
                     .eraseToAnyPublisher()
 
         }
+    }
+
+    func fetchUsers() -> AnyPublisher<[User], Error> {
+        Just([User(name: "Mock user"),
+              User(name: "User 33")])
+            .setFailureType(to: Error.self)
+            .eraseToAnyPublisher()
     }
 
 }

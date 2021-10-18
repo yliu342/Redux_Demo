@@ -19,6 +19,9 @@
 		5EEF949D271D395C00F800A1 /* AppActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF9497271D395C00F800A1 /* AppActions.swift */; };
 		5EEF949E271D395C00F800A1 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF9498271D395C00F800A1 /* AppState.swift */; };
 		5EEF949F271D395C00F800A1 /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF9499271D395C00F800A1 /* Reducer.swift */; };
+		5EEF94A4271D3CE300F800A1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF94A3271D3CE300F800A1 /* User.swift */; };
+		5EEF94A8271D3E2300F800A1 /* UsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF94A7271D3E2300F800A1 /* UsersView.swift */; };
+		5EEF94AA271D432100F800A1 /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF94A9271D432100F800A1 /* UserDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +57,9 @@
 		5EEF9497271D395C00F800A1 /* AppActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppActions.swift; sourceTree = "<group>"; };
 		5EEF9498271D395C00F800A1 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		5EEF9499271D395C00F800A1 /* Reducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
+		5EEF94A3271D3CE300F800A1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5EEF94A7271D3E2300F800A1 /* UsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersView.swift; sourceTree = "<group>"; };
+		5EEF94A9271D432100F800A1 /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,12 +110,9 @@
 		5EEF9469271D392200F800A1 /* Redux_Demo */ = {
 			isa = PBXGroup;
 			children = (
-				5EEF9497271D395C00F800A1 /* AppActions.swift */,
-				5EEF9498271D395C00F800A1 /* AppState.swift */,
-				5EEF9496271D395C00F800A1 /* MiddleWare.swift */,
-				5EEF9499271D395C00F800A1 /* Reducer.swift */,
-				5EEF9495271D395B00F800A1 /* Store.swift */,
-				5EEF9494271D395B00F800A1 /* ValidationView.swift */,
+				5EEF94A2271D3CD100F800A1 /* Model */,
+				5EEF94A1271D3C2500F800A1 /* Redux Related */,
+				5EEF94A0271D3BCA00F800A1 /* View */,
 				5EEF946A271D392200F800A1 /* Redux_DemoApp.swift */,
 				5EEF946E271D392600F800A1 /* Assets.xcassets */,
 				5EEF9470271D392600F800A1 /* Preview Content */,
@@ -140,6 +143,36 @@
 				5EEF9487271D392600F800A1 /* Redux_DemoUITestsLaunchTests.swift */,
 			);
 			path = Redux_DemoUITests;
+			sourceTree = "<group>";
+		};
+		5EEF94A0271D3BCA00F800A1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5EEF9494271D395B00F800A1 /* ValidationView.swift */,
+				5EEF94A7271D3E2300F800A1 /* UsersView.swift */,
+				5EEF94A9271D432100F800A1 /* UserDetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5EEF94A1271D3C2500F800A1 /* Redux Related */ = {
+			isa = PBXGroup;
+			children = (
+				5EEF9497271D395C00F800A1 /* AppActions.swift */,
+				5EEF9498271D395C00F800A1 /* AppState.swift */,
+				5EEF9496271D395C00F800A1 /* MiddleWare.swift */,
+				5EEF9499271D395C00F800A1 /* Reducer.swift */,
+				5EEF9495271D395B00F800A1 /* Store.swift */,
+			);
+			path = "Redux Related";
+			sourceTree = "<group>";
+		};
+		5EEF94A2271D3CD100F800A1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5EEF94A3271D3CE300F800A1 /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,8 +309,11 @@
 				5EEF949F271D395C00F800A1 /* Reducer.swift in Sources */,
 				5EEF949E271D395C00F800A1 /* AppState.swift in Sources */,
 				5EEF949C271D395C00F800A1 /* MiddleWare.swift in Sources */,
+				5EEF94A4271D3CE300F800A1 /* User.swift in Sources */,
+				5EEF94A8271D3E2300F800A1 /* UsersView.swift in Sources */,
 				5EEF946B271D392200F800A1 /* Redux_DemoApp.swift in Sources */,
 				5EEF949B271D395C00F800A1 /* Store.swift in Sources */,
+				5EEF94AA271D432100F800A1 /* UserDetailView.swift in Sources */,
 				5EEF949D271D395C00F800A1 /* AppActions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

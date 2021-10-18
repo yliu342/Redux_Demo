@@ -17,6 +17,7 @@ func appReducer(
     environment: MiddleWare
 ) -> AnyPublisher<AppAction, Never>? {
     switch action {
+    // Validation view
     case let .validatePassword(password):
         state.passWordStatus = .loading
         return environment.api
@@ -43,6 +44,16 @@ func appReducer(
         state.userNameStatus = status
     case let .setPasswordValidation(status):
         state.passWordStatus = status
+
+    // Users view
+    case .fetchUsers:
+        return environment.api
+                .fetchUsers()
+                .replaceError(with: [])
+                .map({ AppAction.setUsers($0)})
+                .eraseToAnyPublisher()
+    case let .setUsers(users):
+        state.users = users
     }
     
     return nil

@@ -21,4 +21,7 @@ struct AppState {
     var allValidationPassed: Bool {
         return userNameStatus == .valid && passWordStatus == .valid
     }
+
+    // Users View
+    var users: [User] = []
 }
