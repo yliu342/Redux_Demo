@@ -6,28 +6,94 @@
 //
 
 import XCTest
+import Combine
 @testable import Redux_Demo
 
+typealias AppReducer = (inout AppState, AppAction, MiddleWare) -> AnyPublisher<AppAction, Never>?
+
 class Redux_DemoTests: XCTestCase {
+    var appState: AppState!
+    var reducer: AppReducer!
+    var middleWare: MiddleWare!
+    var api: API!
+    private var cancellables: Set<AnyCancellable> = []
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    override func setUp() {
+        super.setUp()
+        appState = AppState()
+        reducer = appReducer
+        api = MockAPI()
+        middleWare = MiddleWare(api: api)
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    override func tearDown() {
+        super.tearDown()
+        appState = nil
+        reducer = nil
+        middleWare = nil
+        api = nil
+        cancellables = []
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func test_validatePassword_withInvalidPassword_returnCorrectAction() {
+        let expectation = XCTestExpectation(description: "expectation")
+        let action = AppAction.validatePassword(password: "wrong")
+        reducer(&appState, action, middleWare)!
+            .sink { action in
+                guard case .setPasswordValidation(.invalid(error: "Password Error")) = action else {
+                    XCTFail()
+                    return
+                }
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
+        XCTAssertEqual(appState.passWordStatus, .loading)
+        wait(for: [expectation], timeout: 5.0)
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func test_validatePassword_withValidPassword_returnCorrectAction() {
+        let expectation = XCTestExpectation(description: "expectation")
+        let action = AppAction.validatePassword(password: "1234")
+        reducer(&appState, action, middleWare)!
+            .sink { action in
+                guard case .setPasswordValidation(.valid) = action else {
+                    XCTFail()
+                    return
+                }
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
+        XCTAssertEqual(appState.passWordStatus, .loading)
+        wait(for: [expectation], timeout: 5.0)
     }
 
+    func test_setPasswordValidation_updateTheStateCorrectly() {
+        // Make sure initial state is none
+        XCTAssertEqual(appState.passWordStatus, .none)
+
+        // when reducer runs
+        let action = AppAction.setPasswordValidation(.valid)
+        let _ = reducer(&appState, action, middleWare)
+
+        XCTAssertEqual(appState.passWordStatus, .valid)
+    }
+
+    func test_fetchUsers_returnCorrectAction() {
+        let expectation = XCTestExpectation(description: "expectation")
+        let action = AppAction.fetchUsers
+        reducer(&appState, action, middleWare)!
+            .sink { action in
+                guard case .setUsers(let users) = action else {
+                    XCTFail()
+                    return
+                }
+                expectation.fulfill()
+                XCTAssertEqual(users.count, 2)
+                XCTAssertEqual(users[0].name, "Mock user")
+                XCTAssertEqual(users[1].name, "User 33")
+            }
+            .store(in: &cancellables)
+
+        wait(for: [expectation], timeout: 5.0)
+    }
 }

@@ -20,11 +20,11 @@ struct MockAPI: API {
         if username == "lykxc" {
             return Just(())
                     .setFailureType(to: Error.self)
-                    .delay(for: 5, scheduler: RunLoop.main)
+                    .delay(for: 3, scheduler: RunLoop.main)
                     .eraseToAnyPublisher()
         } else {
             return Fail(error: NSError())
-                    .delay(for: 5, scheduler: RunLoop.main)
+                    .delay(for: 3, scheduler: RunLoop.main)
                     .eraseToAnyPublisher()
 
         }
@@ -34,11 +34,11 @@ struct MockAPI: API {
         if password == "1234" {
             return Just(())
                     .setFailureType(to: Error.self)
-                    .delay(for: 5, scheduler: RunLoop.main)
+                    .delay(for: 3, scheduler: RunLoop.main)
                     .eraseToAnyPublisher()
         } else {
             return Fail(error: NSError())
-                    .delay(for: 5, scheduler: RunLoop.main)
+                    .delay(for: 3, scheduler: RunLoop.main)
                     .eraseToAnyPublisher()
 
         }

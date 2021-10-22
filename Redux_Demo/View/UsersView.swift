@@ -24,5 +24,6 @@ struct UsersView: View {
 struct UsersView_Previews: PreviewProvider {
     static var previews: some View {
         UsersView()
+            .environmentObject(AppStore(initialState: AppState(userNameStatus: .none, passWordStatus: .none, users: [User(name: "user1"),User(name: "user2"), User(name: "user3")]), reducer: appReducer, environment: MiddleWare(api: MockAPI())))
     }
 }
