@@ -54,6 +54,8 @@ func appReducer(
                 .eraseToAnyPublisher()
     case let .setUsers(users):
         state.users = users
+    case let .deleteUserAt(index):
+        state.users.remove(atOffsets: index)
     }
     
     return nil

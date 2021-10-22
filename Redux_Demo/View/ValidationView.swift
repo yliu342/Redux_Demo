@@ -63,7 +63,7 @@ struct ValidationView: View {
                 }
                 Spacer()
 
-                NavigationLink(destination: UsersView()) {
+                NavigationLink(destination: UserContainerView()) {
                     Text("User View")
                 }
                 .disabled(!store.state.allValidationPassed)

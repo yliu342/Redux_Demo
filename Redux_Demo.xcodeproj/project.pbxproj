@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E1CDE5C272262E30064E476 /* UserContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1CDE5B272262E30064E476 /* UserContainerView.swift */; };
 		5EEF946B271D392200F800A1 /* Redux_DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEF946A271D392200F800A1 /* Redux_DemoApp.swift */; };
 		5EEF946F271D392600F800A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EEF946E271D392600F800A1 /* Assets.xcassets */; };
 		5EEF9472271D392600F800A1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EEF9471271D392600F800A1 /* Preview Assets.xcassets */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5E1CDE5B272262E30064E476 /* UserContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContainerView.swift; sourceTree = "<group>"; };
 		5EEF9467271D392200F800A1 /* Redux_Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Redux_Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EEF946A271D392200F800A1 /* Redux_DemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Redux_DemoApp.swift; sourceTree = "<group>"; };
 		5EEF946E271D392600F800A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				5EEF9494271D395B00F800A1 /* ValidationView.swift */,
 				5EEF94A7271D3E2300F800A1 /* UsersView.swift */,
 				5EEF94A9271D432100F800A1 /* UserDetailView.swift */,
+				5E1CDE5B272262E30064E476 /* UserContainerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				5EEF949E271D395C00F800A1 /* AppState.swift in Sources */,
 				5EEF949C271D395C00F800A1 /* MiddleWare.swift in Sources */,
 				5EEF94A4271D3CE300F800A1 /* User.swift in Sources */,
+				5E1CDE5C272262E30064E476 /* UserContainerView.swift in Sources */,
 				5EEF94A8271D3E2300F800A1 /* UsersView.swift in Sources */,
 				5EEF946B271D392200F800A1 /* Redux_DemoApp.swift in Sources */,
 				5EEF949B271D395C00F800A1 /* Store.swift in Sources */,

@@ -17,4 +17,5 @@ enum AppAction {
     // User view action
     case fetchUsers
     case setUsers(_ users: [User])
+    case deleteUserAt(index: IndexSet)
 }
