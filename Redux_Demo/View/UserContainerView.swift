@@ -12,17 +12,17 @@ import SwiftUI
 struct UserContainerView: View {
     @EnvironmentObject var store: AppStore
     var body: some View {
-        UsersView(users: store.state.users,
+        UsersView(users: store.state.userState.users,
                   onDelete: onDelete)
             .onAppear(perform: fetch)
     }
 
     private func onDelete(_ index: IndexSet) {
-        store.send(.deleteUserAt(index: index))
+        store.send(.user(action: .deleteUserAt(index: index)))
     }
 
     private func fetch() {
-        store.send(.fetchUsers)
+        store.send(.user(action: .fetchUsers))
     }
 }
 

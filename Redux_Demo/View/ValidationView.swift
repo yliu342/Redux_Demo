@@ -18,17 +18,17 @@ struct ValidationView: View {
                 Spacer()
                 TextField("Enter UsernName", text: $userName) { isEditing in
                     if !isEditing {
-                        store.send(.validateUserName(userName: userName))
+                        store.send(.validation(action: .validateUserName(userName: userName)))
                     }
                 } onCommit: {
-                    store.send(.validateUserName(userName: userName))
+                    store.send(.validation(action: .validateUserName(userName: userName)))
                 }
                 .disableAutocorrection(true)
                 .autocapitalization(.none)
                 .padding(.horizontal, 50)
                 .textFieldStyle(.roundedBorder)
 
-                switch store.state.userNameStatus {
+                switch store.state.regiState.userNameStatus {
                 case .loading:
                     Text("Loading")
                 case .none:
@@ -41,17 +41,17 @@ struct ValidationView: View {
 
                 TextField("Enter Password", text: $password) { isEditing in
                     if !isEditing {
-                        store.send(.validatePassword(password: password))
+                        store.send(.validation(action: .validatePassword(password: password)))
                     }
                 } onCommit: {
-                    store.send(.validatePassword(password: password))
+                    store.send(.validation(action: .validatePassword(password: password)))
                 }
                 .disableAutocorrection(true)
                 .autocapitalization(.none)
                 .padding(.horizontal, 50)
                 .textFieldStyle(.roundedBorder)
 
-                switch store.state.passWordStatus {
+                switch store.state.regiState.passWordStatus {
                 case .loading:
                     Text("Loading")
                 case .none:
@@ -66,7 +66,7 @@ struct ValidationView: View {
                 NavigationLink(destination: UserContainerView()) {
                     Text("User View")
                 }
-                .disabled(!store.state.allValidationPassed)
+                .disabled(!store.state.regiState.allValidationPassed)
 
             }
             .navigationTitle("Validation")

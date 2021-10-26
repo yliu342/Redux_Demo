@@ -37,53 +37,53 @@ class Redux_DemoTests: XCTestCase {
 
     func test_validatePassword_withInvalidPassword_returnCorrectAction() {
         let expectation = XCTestExpectation(description: "expectation")
-        let action = AppAction.validatePassword(password: "wrong")
+        let action = AppAction.validation(action: .validatePassword(password: "wrong"))
         reducer(&appState, action, middleWare)!
             .sink { action in
-                guard case .setPasswordValidation(.invalid(error: "Password Error")) = action else {
+                guard case .validation(action: .setPasswordValidation(.invalid(error: "Password Error"))) = action else {
                     XCTFail()
                     return
                 }
                 expectation.fulfill()
             }
             .store(in: &cancellables)
-        XCTAssertEqual(appState.passWordStatus, .loading)
+        XCTAssertEqual(appState.regiState.passWordStatus, .loading)
         wait(for: [expectation], timeout: 5.0)
     }
 
     func test_validatePassword_withValidPassword_returnCorrectAction() {
         let expectation = XCTestExpectation(description: "expectation")
-        let action = AppAction.validatePassword(password: "1234")
+        let action = AppAction.validation(action: .validatePassword(password: "1234"))
         reducer(&appState, action, middleWare)!
             .sink { action in
-                guard case .setPasswordValidation(.valid) = action else {
+                guard case .validation(action: .setPasswordValidation(.valid)) = action else {
                     XCTFail()
                     return
                 }
                 expectation.fulfill()
             }
             .store(in: &cancellables)
-        XCTAssertEqual(appState.passWordStatus, .loading)
+        XCTAssertEqual(appState.regiState.passWordStatus, .loading)
         wait(for: [expectation], timeout: 5.0)
     }
 
     func test_setPasswordValidation_updateTheStateCorrectly() {
         // Make sure initial state is none
-        XCTAssertEqual(appState.passWordStatus, .none)
+        XCTAssertEqual(appState.regiState.passWordStatus, .none)
 
         // when reducer runs
-        let action = AppAction.setPasswordValidation(.valid)
+        let action = AppAction.validation(action: .setPasswordValidation(.valid))
         let _ = reducer(&appState, action, middleWare)
 
-        XCTAssertEqual(appState.passWordStatus, .valid)
+        XCTAssertEqual(appState.regiState.passWordStatus, .valid)
     }
 
     func test_fetchUsers_returnCorrectAction() {
         let expectation = XCTestExpectation(description: "expectation")
-        let action = AppAction.fetchUsers
+        let action = AppAction.user(action: .fetchUsers)
         reducer(&appState, action, middleWare)!
             .sink { action in
-                guard case .setUsers(let users) = action else {
+                guard case .user(action: .setUsers(let users)) = action else {
                     XCTFail()
                     return
                 }

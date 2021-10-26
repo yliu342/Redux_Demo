@@ -7,15 +7,20 @@
 
 import Foundation
 
-enum AppAction {
-    // Validation View actions
+enum RegistrationActions {
     case setUserNameValidation(_ validation: ValidationStatus)
     case setPasswordValidation(_ validation: ValidationStatus)
     case validateUserName(userName: String)
     case validatePassword(password: String)
+}
 
-    // User view action
+enum UserActions {
     case fetchUsers
     case setUsers(_ users: [User])
     case deleteUserAt(index: IndexSet)
+}
+
+enum AppAction {
+    case validation(action: RegistrationActions)
+    case user(action: UserActions)
 }

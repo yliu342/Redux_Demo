@@ -11,22 +11,22 @@ import Combine
 typealias Reducer<State, Action, Environment> =
     (inout State, Action, Environment) -> AnyPublisher<Action, Never>?
 
-func appReducer(
-    state: inout AppState,
-    action: AppAction,
+
+func validationReducer(
+    state: inout RegistrationState,
+    action: RegistrationActions,
     environment: MiddleWare
-) -> AnyPublisher<AppAction, Never>? {
+) -> AnyPublisher<RegistrationActions, Never>? {
     switch action {
-    // Validation view
     case let .validatePassword(password):
         state.passWordStatus = .loading
         return environment.api
                 .validatePassword(password: password)
                 .map({ _ in
-                    AppAction.setPasswordValidation(.valid)
+                    RegistrationActions.setPasswordValidation(.valid)
                 })
                 .catch { _ in
-                    return Just(AppAction.setPasswordValidation(.invalid(error: "Password Error")))
+                    return Just(RegistrationActions.setPasswordValidation(.invalid(error: "Password Error")))
                 }
                 .eraseToAnyPublisher()
     case let .validateUserName(userName):
@@ -34,29 +34,60 @@ func appReducer(
         return environment.api
                 .validateUsername(username: userName)
                 .map({ _ in
-                    AppAction.setUserNameValidation(.valid)
+                    RegistrationActions.setUserNameValidation(.valid)
                 })
                 .catch { _ in
-                    return Just(AppAction.setUserNameValidation(.invalid(error: "UserName Error")))
+                    return Just(RegistrationActions.setUserNameValidation(.invalid(error: "UserName Error")))
                 }
                 .eraseToAnyPublisher()
     case let .setUserNameValidation(status):
         state.userNameStatus = status
     case let .setPasswordValidation(status):
         state.passWordStatus = status
+    }
 
-    // Users view
+    return nil
+}
+
+func userReducer(
+    state: inout UserState,
+    action: UserActions,
+    environment: MiddleWare
+) -> AnyPublisher<UserActions, Never>? {
+    switch action {
     case .fetchUsers:
         return environment.api
                 .fetchUsers()
                 .replaceError(with: [])
-                .map({ AppAction.setUsers($0)})
+                .map({ UserActions.setUsers($0)})
                 .eraseToAnyPublisher()
     case let .setUsers(users):
         state.users = users
     case let .deleteUserAt(index):
         state.users.remove(atOffsets: index)
     }
-    
+
+    return nil
+}
+
+
+func appReducer(
+    state: inout AppState,
+    action: AppAction,
+    environment: MiddleWare
+) -> AnyPublisher<AppAction, Never>? {
+    switch action {
+    case .validation(let action):
+        if let result = validationReducer(state: &state.regiState, action: action, environment: environment) {
+            return result.map(AppAction.validation)
+                .eraseToAnyPublisher()
+        }
+
+    case .user(let action):
+        if let result = userReducer(state: &state.userState, action: action, environment: environment) {
+            return result.map(AppAction.user)
+                .eraseToAnyPublisher()
+        }
+    }
     return nil
 }

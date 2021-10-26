@@ -14,14 +14,20 @@ enum ValidationStatus: Equatable {
     case invalid(error: String)
 }
 
-struct AppState {
-    // Registration view
+struct RegistrationState {
     var userNameStatus: ValidationStatus = .none
     var passWordStatus: ValidationStatus = .none
     var allValidationPassed: Bool {
         return userNameStatus == .valid && passWordStatus == .valid
     }
+}
 
-    // Users View
+struct UserState {
     var users: [User] = []
+}
+
+
+struct AppState {
+    var regiState: RegistrationState = RegistrationState()
+    var userState: UserState = UserState()
 }
